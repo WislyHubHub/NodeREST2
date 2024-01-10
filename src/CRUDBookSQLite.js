@@ -50,7 +50,7 @@ app.post('/books' ,(req ,res) => {
 
 app.put('/books/:id' ,(req ,res) => {
     const book = req.body;
-    db.run('UPDATE books SET title = ?, author = ? WHERE id = ?' ,book.title, book.author,req.params.id ,function(err) {
+    db.run('UPDATE books SET title = ?, author = ? WHERE id = ?' ,book.title, book.author,req.param.id ,function(err) {
         if(err) {
             res.status(500).send(err);
 
@@ -60,10 +60,10 @@ app.put('/books/:id' ,(req ,res) => {
     });
 });
 
-app.delete('/books/:id' , (req ,res) => {
-    db.run('DELETE FROM books WHERE id = ?' , req.params.id ,function(err) {
+app.delete('/book/:id' , (req ,res) => {
+    db.run('DELETE FROM books WHERE id = ?' , req.params,id ,function(err) {
         if(err) {
-            res.status(500).send(err);
+            res.status(500).send(err)
         }else {
             res.send({});
         }
